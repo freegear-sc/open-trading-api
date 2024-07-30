@@ -33,7 +33,7 @@ clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
 key_bytes = 32
 
-config_root = 'd:\\KIS\\config\\'  # 토큰 파일이 저장될 폴더, 제3자가 찾지 어렵도록 경로 설정하시기 바랍니다.
+config_root = '/Users/kevinim/Desktop/Projects/2024-05-30_InterStellar4.0/src/open-trading-api/Sample01/'  # 토큰 파일이 저장될 폴더, 제3자가 찾지 어렵도록 경로 설정하시기 바랍니다.
 #token_tmp = config_root + 'KIS000000'  # 토큰 로컬저장시 파일 이름 지정, 파일이름을 토큰값이 유추가능한 파일명은 삼가바랍니다.
 #token_tmp = config_root + 'KIS' + datetime.today().strftime("%Y%m%d%H%M%S")  # 토큰 로컬저장시 파일명 년월일시분초
 token_tmp = config_root + 'KIS' + datetime.today().strftime("%Y%m%d")  # 토큰 로컬저장시 파일명 년월일
@@ -122,7 +122,7 @@ def isPaperTrading():  # 모의투자 매매
 
 
 # 실전투자면 'prod', 모의투자면 'vps'를 셋팅 하시기 바랍니다.
-def changeTREnv(token_key, svr='prod', product=_cfg['my_prod']):
+def changeTREnv(token_key, svr='vps', product=_cfg['my_prod']):
     cfg = dict()
 
     global _isPaper
@@ -167,7 +167,7 @@ def _getResultObject(json_data):
 
 # Token 발급, 유효기간 1일, 6시간 이내 발급시 기존 token값 유지, 발급시 알림톡 무조건 발송
 # 모의투자인 경우  svr='vps', 투자계좌(01)이 아닌경우 product='XX' 변경하세요 (계좌번호 뒤 2자리)
-def auth(svr='prod', product=_cfg['my_prod'], url=None):
+def auth(svr='vps', product=_cfg['my_prod'], url=None):
     p = {
         "grant_type": "client_credentials",
     }
